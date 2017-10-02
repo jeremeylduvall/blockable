@@ -1,26 +1,16 @@
 import React from 'react';
-import Button from '../../Components/Button';
-import TextPlaceholder from '../../Components/TextPlaceholder';
+import Button from '../../components/button';
+import Placeholder from '../../components/placeholder';
+import { connect } from 'react-redux'
 
 class AddItemView extends React.Component {
-	constructor( props ) {
-		super( props );
-		this.state = {
-			times: [
-				'45',
-				'60',
-				'90'
-			],
-			textBoxAvailable: false
-		};
-	}
-
 	renderButtonGroup() {
 		const result = [];
+		const { times } = this.props;
 
-		this.state.times.forEach( function( time ) {
+		times.forEach( function( time, index ) {
 			result.push(
-				<Button value={ time } />
+				<Button value={ time + ' minutes' } key={ index } />
 			);
 		} );
 
@@ -31,17 +21,19 @@ class AddItemView extends React.Component {
 		return( 
 			<div className='view'>
 				{ this.renderButtonGroup() }
-				<TextPlaceholder />
+				<Placeholder />
 			</div>
 		)
 	}
 }
 
-// Button.propTypes = {
-//   onClick: PropTypes.function,
-//   value: PropTypes.string,
-//   buttonColor: PropTypes.string,
-//   classNames: PropTypes.array,
-// };
+const mapStateToProps = state => {
+  return {
+    times: state.times
+  }
+}
 
-export default AddItemView;
+export default connect(
+  mapStateToProps,
+  null,
+)( AddItemView );

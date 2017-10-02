@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Calendar from './Components/Calendar';
-import AddItemView from './Views/AddItem';
+import CalendarView from './views/calendar';
+import AddItemView from './views/additem';
 
 class App extends Component {
     render() {
@@ -11,10 +10,8 @@ class App extends Component {
                 <header className="App-header">
                     <h1 className="App-title">Blockable</h1>
                 </header>
-                <div className="calendar">
-                    <Calendar />
-                </div>
-                <AddItemView/>
+                <CalendarView />
+                <AddItemView />
             </div>
         )
     }

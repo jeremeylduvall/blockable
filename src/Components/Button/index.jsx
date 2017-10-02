@@ -8,7 +8,7 @@ class Button extends React.Component {
 				type='button'
 				onClick={ this.props.onClick }
 				value={ this.props.value }
-				classNames={ this.props.classNames }
+				className={ this.props.classNames }
 			/>
 		)
 	}
@@ -18,7 +18,7 @@ Button.propTypes = {
   onClick: PropTypes.function,
   value: PropTypes.string,
   buttonColor: PropTypes.string,
-  classNames: PropTypes.array,
+  className: PropTypes.array,
 };
 
 export default Button;

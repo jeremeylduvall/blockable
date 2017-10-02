@@ -3,7 +3,7 @@ import React from 'react';
 const TextPlaceholder = function(){
 		return (
 			<div className="placeholder">
-				<span>hi!</span>
+				<span>Click a button above to add an event!</span>
 			</div>
 		)
 }
