@@ -1,26 +1,18 @@
 import React from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+import { connect } from 'react-redux'
 
-BigCalendar.momentLocalizer(moment);
+BigCalendar.momentLocalizer( moment );
 
-const events = [
-	{
-		'title': 'Happy Hour',
-		'start': new Date(2017, 8, 28, 17, 0, 0, 0),
-		'end': new Date(2017, 8, 28, 17, 30, 0, 0),
-		desc: 'Most important meal of the day'
-	},
-]
-
-const date = new Date(); 
+const date = new Date();
 
 class Calendar extends React.Component {
 	render() {
 		return( 
 			<BigCalendar
 				defaultDate={ date }
-				events={ events }
+				events={ [ this.props.events ] }
 				defaultView='day'
 				toolbar={ false }
 	      />
@@ -28,4 +20,13 @@ class Calendar extends React.Component {
 	}
 }
 
-export default Calendar;
+const mapStateToProps = state => {
+  return {
+    events: state.events
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null,
+)(Calendar)

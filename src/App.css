@@ -16,3 +16,19 @@
 .App-intro {
   font-size: large;
 }
+
+.calendar {
+	float: left;
+	width: 50%;
+}
+
+.view {
+	float: right;
+	width: 50%;
+}
+
+.placeholder {
+    padding: 300px;
+    font-size: 50px;
+    border: 2px dotted black;
+}
