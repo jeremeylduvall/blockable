@@ -11,13 +11,14 @@ const defaultEvent =  {
 const events = ( state = defaultEvent, action ) => {
 	switch ( action.type ) {
 		case 'ADD_EVENT':
+			console.log( 'action' );
 			return [
 				...state,
 				{
 				  title: action.title,
-				  start: action.start,
-				  end: action.end,
-				  desc: action.desc,
+				  start: action.startTime,
+				  end: action.endTime,
+				  desc: action.description,
 				}
 			]
 		default:

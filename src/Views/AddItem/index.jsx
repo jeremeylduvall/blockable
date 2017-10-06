@@ -1,16 +1,17 @@
 import React from 'react';
 import Button from '../../components/button';
 import Placeholder from '../../components/placeholder';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { toggleVisiblity } from '../../actions';
 
 class AddItemView extends React.Component {
 	renderButtonGroup() {
 		const result = [];
-		const { times } = this.props;
+		const { times, onButtonClick } = this.props;
 
 		times.forEach( function( time, index ) {
 			result.push(
-				<Button value={ time + ' minutes' } key={ index } />
+				<Button value={ time + ' minutes' } key={ index } onClick={ onButtonClick } />
 			);
 		} );
 
@@ -33,7 +34,15 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+	return {
+		onButtonClick: () => {
+			dispatch( toggleVisiblity() )
+		}
+	}
+}
+
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
 )( AddItemView );
