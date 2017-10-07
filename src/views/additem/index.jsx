@@ -43,11 +43,17 @@ class AddItemView extends React.Component {
 	}
 
 	onSubmitEvent = () => {
-		const { currentSegmentLength } = this.props;
+		const { currentSegmentLength, onButtonClick, onAddEvent } = this.props;
 		const eventDescription = document.getElementsByName( 'eventtext' )[0].value;
 		const eventDetails = [ currentSegmentLength, moment().toDate(), moment().add(30, 'm').toDate(), eventDescription ];
 
-		this.props.onAddEvent( eventDetails );
+		onAddEvent( eventDetails );
+		this.clearTextBox();
+		onButtonClick( null )
+	}
+
+	clearTextBox = () => {
+		document.getElementsByName( 'eventtext' )[0].value = '';
 	}
 
 	render() {

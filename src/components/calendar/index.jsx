@@ -14,6 +14,8 @@ class Calendar extends React.Component {
 				events={ this.props.events }
 				defaultView='day'
 				toolbar={ false }
+				min={ moment('6:00am', 'h:mma').toDate() }
+				max={ moment('6:00pm', 'h:mma').toDate() }
 	      />
 		)
 	}
