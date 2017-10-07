@@ -15,7 +15,7 @@ class Button extends React.Component {
 }
 
 Button.propTypes = {
-  onClick: PropTypes.function,
+  onClick: PropTypes.func,
   value: PropTypes.string,
   buttonColor: PropTypes.string,
   className: PropTypes.array,
