@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import events from './events'
-import textVisiblity from './textVisibility'
+import textVisibility from './textVisibility'
 import times from './times'
 
 const blockableApp = combineReducers( {
 	events,
-	textVisiblity,
+	textVisibility,
 	times
 } );
 

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 class CalendarView extends React.Component {
 	render() {
+		console.log( this.props.events );
 		return(
 			<div className='calendar'>
 				<Calendar events={ this.props.events } />

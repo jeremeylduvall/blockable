@@ -1,7 +1,10 @@
-const textVisibility = ( state = false, action ) => {
+const textVisibility = ( state = { visibility: false, time: null }, action ) => {
 	switch ( action.type ) {
 		case 'TOGGLE_TEXT_FIELD':
-			return ! state;
+			return {
+				visibility: ! state.visibility,
+				time: action.time
+			}
 		default:
 			return state
 	}

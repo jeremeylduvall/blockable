@@ -1,5 +1,4 @@
 export const addEvent = ( title, startTime, endTime, description ) => {
-  console.log( 'calling action' );
   return {
     type: 'ADD_EVENT',
     title,
@@ -9,8 +8,9 @@ export const addEvent = ( title, startTime, endTime, description ) => {
   }
 }
 
-export const toggleVisiblity = () => {
+export const textVisibility = ( time ) => {
   return {
-    type: 'TOGGLE_TEXT_FIELD'
+    type: 'TOGGLE_TEXT_FIELD',
+    time
   }
 }
