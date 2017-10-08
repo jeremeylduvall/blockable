@@ -1,6 +1,7 @@
 import React from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+import config from '../../default.json';
 
 BigCalendar.momentLocalizer( moment );
 
@@ -14,8 +15,8 @@ class Calendar extends React.Component {
 				events={ this.props.events }
 				defaultView='day'
 				toolbar={ false }
-				min={ moment('6:00am', 'h:mma').toDate() }
-				max={ moment('6:00pm', 'h:mma').toDate() }
+				min={ moment( config.day.start, 'h:mma' ).toDate() }
+				max={ moment( config.day.end, 'h:mma').toDate() }
 	      />
 		)
 	}

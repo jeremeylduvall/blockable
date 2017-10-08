@@ -4,6 +4,7 @@ import Placeholder from '../../components/placeholder';
 import { connect } from 'react-redux';
 import { textVisibility, addEvent } from '../../actions';
 import TextBox from '../../components/textbox';
+import TimeSelect from '../../components/timeselect';
 import moment from 'moment';
 
 class AddItemView extends React.Component {
@@ -42,10 +43,23 @@ class AddItemView extends React.Component {
 		);
 	}
 
+	renderTimeSelect = () => {
+		return (
+			<div>Start a new block at <TimeSelect /></div>
+		);
+	}
+
 	onSubmitEvent = () => {
 		const { currentSegmentLength, onButtonClick, onAddEvent } = this.props;
+		const startTime = document.getElementsByName( 'time' )[0].value;
+
+		// Build the event details
+		const eventTitle = currentSegmentLength + ' work block';
+		const eventStartTime = moment( startTime, 'h:mma' ).toDate();
+		const eventEndTime = moment( startTime, 'h:mma' ).add( currentSegmentLength, 'm' ).toDate()
 		const eventDescription = document.getElementsByName( 'eventtext' )[0].value;
-		const eventDetails = [ currentSegmentLength, moment().toDate(), moment().add(30, 'm').toDate(), eventDescription ];
+
+		const eventDetails = [ eventTitle, eventStartTime, eventEndTime, eventDescription ];
 
 		onAddEvent( eventDetails );
 		this.clearTextBox();
@@ -60,6 +74,7 @@ class AddItemView extends React.Component {
 		return( 
 			<div className='view'>
 				{ this.renderButtonGroup() }
+				{ this.renderTimeSelect() }
 				{ this.renderTextBox() }
 			</div>
 		)
