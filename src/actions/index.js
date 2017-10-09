@@ -1,10 +1,9 @@
-export const addEvent = ( title, startTime, endTime, description ) => {
+export const addEvent = ( description, startTime, endTime  ) => {
   return {
     type: 'ADD_EVENT',
-    title,
+    description,
     startTime,
     endTime,
-    description
   }
 }
 
