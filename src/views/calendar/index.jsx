@@ -34,7 +34,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		onEventClick: ( event, time ) => {
-			dispatch( eventSelected() );
+			dispatch( eventSelected( event ) );
 			dispatch( removeEvent( event ) );
 			dispatch( textVisibility( time ) );
 		},

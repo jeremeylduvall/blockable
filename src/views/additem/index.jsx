@@ -8,6 +8,13 @@ import TimeSelect from '../../components/timeselect';
 import moment from 'moment';
 
 class AddItemView extends React.Component {
+	componentDidUpdate() {
+		// Set the value of the text field to the selected event if it exists
+		// It's necessary to do this in a lifecycle method because we have to make sure the text box has rendered.
+		if ( this.props.selectedEvent.selected && this.props.selectedEvent.event ) {
+			document.getElementsByName( 'eventtext' )[0].value = this.props.selectedEvent.event.desc;	
+		}
+	}
 	renderButtonGroup = () => {
 		const result = [];
 		const { times, onButtonClick } = this.props;
@@ -35,7 +42,14 @@ class AddItemView extends React.Component {
 				<div>Start a { this.props.currentSegmentLength }-minute long calendar block</div>
 				<TextBox />
 				<div>
-					<Button value='Cancel' onClick={ onButtonClick.bind( this, null ) } />
+					<Button 
+						value={
+							this.props.selectedEvent.event && this.props.selectedEvent.selected ?
+							'Delete' :
+							'Cancel'
+						}
+						onClick={ onButtonClick.bind( this, null ) }
+					/>
 					<Button value='Confirm' onClick={ this.onSubmitEvent } />
 				</div>
 			</div>
@@ -61,12 +75,14 @@ class AddItemView extends React.Component {
 
 		const eventDetails = [ eventTitle, eventStartTime, eventEndTime, eventDescription ];
 
+		// Add the event to the store
 		onAddEvent( eventDetails );
 		this.clearTextBox();
-		onButtonClick( null )
+		onButtonClick( null );
 	}
 
 	clearTextBox = () => {
+		// Clear the text box
 		document.getElementsByName( 'eventtext' )[0].value = '';
 	}
 
@@ -86,21 +102,20 @@ const mapStateToProps = state => {
     times: state.times,
     textVisibility: state.textVisibility.visibility,
     currentSegmentLength: state.textVisibility.time,
-    eventSelected: state.textVisibility.eventSelected,
+    selectedEvent: state.selectedEvent
   }
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
 		onButtonClick: ( time ) => {
-			dispatch( textVisibility( time ) );	
+			dispatch( textVisibility( time ) );
+			dispatch( eventSelected() );
 		},
 		onAddEvent: ( [ title, description, startTime, endTime ] ) => {
 			dispatch( addEvent( title, description, startTime, endTime ) );
-		},
-		deselectEvent: () => {
 			dispatch( eventSelected() );
-		}
+		},
 	}
 }
 
