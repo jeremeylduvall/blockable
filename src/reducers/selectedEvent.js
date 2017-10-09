@@ -3,7 +3,7 @@ const selectedEvent = ( state = { selected: false, event: null }, action ) => {
 		case 'EVENT_SELECTED':
 			return {
 				...state,
-				selected: true,
+				selected: action.event ? true : false,
 				event: action.event
 			}
 
