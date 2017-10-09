@@ -17,6 +17,7 @@ class Calendar extends React.Component {
 				toolbar={ false }
 				min={ moment( config.day.start, 'h:mma' ).toDate() }
 				max={ moment( config.day.end, 'h:mma').toDate() }
+				onSelectEvent={ this.props.onEventClick }
 	      />
 		)
 	}

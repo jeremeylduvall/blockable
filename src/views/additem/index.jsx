@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../../components/button';
 import Placeholder from '../../components/placeholder';
 import { connect } from 'react-redux';
-import { textVisibility, addEvent } from '../../actions';
+import { textVisibility, addEvent, eventSelected } from '../../actions';
 import TextBox from '../../components/textbox';
 import TimeSelect from '../../components/timeselect';
 import moment from 'moment';
@@ -86,16 +86,20 @@ const mapStateToProps = state => {
     times: state.times,
     textVisibility: state.textVisibility.visibility,
     currentSegmentLength: state.textVisibility.time,
+    eventSelected: state.textVisibility.eventSelected,
   }
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
 		onButtonClick: ( time ) => {
-			dispatch( textVisibility( time ) );
+			dispatch( textVisibility( time ) );	
 		},
 		onAddEvent: ( [ title, description, startTime, endTime ] ) => {
 			dispatch( addEvent( title, description, startTime, endTime ) );
+		},
+		deselectEvent: () => {
+			dispatch( eventSelected() );
 		}
 	}
 }

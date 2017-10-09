@@ -10,6 +10,9 @@ const events = ( state = [], action ) => {
 				  desc: action.description,
 				}
 			]
+		case 'REMOVE_EVENT':
+			return state.filter( calendarEvent => calendarEvent !== action.selectedEvent );
+			
 		default:
 			return state
 	}
