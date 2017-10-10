@@ -16,7 +16,6 @@ Button.propTypes = {
   onClick: PropTypes.func,
   value: PropTypes.string,
   buttonColor: PropTypes.string,
-  className: PropTypes.array,
 };
 
 export default Button;

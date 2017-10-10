@@ -1,9 +1,17 @@
+/* Color Palettes
+
+30 minute segment - #A7226E
+60 minute segment - #EC2049
+90 minute segment - #F26B38
+Secondary - #F7DB4F
+Background - #2F9599 */
+
 .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #000080;
+  background-color: #2F9599;
   height: 10%;
   padding: 10px;
   color: #fff;
@@ -21,7 +29,7 @@ html, body {
   height: 100%;
 }
 body {
-  background-color: #000080;
+  background-color: #2F9599;
   color: #fff;
 
   margin: 0;
@@ -67,21 +75,35 @@ input.addItem_timeselector_button {
     border: none;
     height: 30px;
     margin: 20px;
-    border-radius: 25px;
+    border-radius: 5px;
+    color: #fff;
 }
 
 input.addItem_timeselector_button:hover {
-  background-color: white;
+  background-color: #fff;
+  color: #000;
 }
 
 .addItem_timeselector_button.length30 {
-  background-color: green;
+  background-color: #A7226E;
 }
 
 .addItem_timeselector_button.length60 {
-  background-color: red;
+  background-color: #EC2049;
 }
 
 .addItem_timeselector_button.length90 {
-  background-color: lightblue;
+  background-color: #F26B38;
+}
+
+.blockable-app_30-minute-block {
+  background-color: #A7226E;
+}
+
+.blockable-app_60-minute-block {
+  background-color: #EC2049;
+}
+
+.blockable-app_90-minute-block {
+  background-color: #F26B38;
 }

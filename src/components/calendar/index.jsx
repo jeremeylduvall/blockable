@@ -7,6 +7,15 @@ BigCalendar.momentLocalizer( moment );
 
 const date = new Date();
 
+const addEventClass = ( event ) => {
+	const eventDuration = moment( event.end ).diff( event.start, 'minutes' );
+	const eventClass='blockable-app_' + eventDuration + '-minute-block';
+
+	return {
+		className: eventClass
+	};
+}
+
 const Calendar = ( { events, onEventClick } ) => {
 	return (
 		<BigCalendar
@@ -17,6 +26,7 @@ const Calendar = ( { events, onEventClick } ) => {
 			min={ moment( config.day.start, 'h:mma' ).toDate() }
 			max={ moment( config.day.end, 'h:mma' ).toDate() }
 			onSelectEvent={ onEventClick }
+			eventPropGetter={ addEventClass }
       />
 	);
 };
