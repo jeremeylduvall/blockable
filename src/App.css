@@ -3,32 +3,85 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: auto;
-  padding: 20px;
-  color: white;
+  background-color: #000080;
+  height: 10%;
+  padding: 10px;
+  color: #fff;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 3.5em;
 }
 
 .App-intro {
   font-size: large;
 }
 
+html, body {
+  height: 100%;
+}
+body {
+  background-color: #000080;
+  color: #fff;
+
+  margin: 0;
+}
+
+#root, .App {
+  height: 100%;
+}
+
+.blockable {
+  height: 90%;
+  display: flex;
+}
+
 .calendar {
 	float: left;
-	width: 50%;
+	width: 44%;
+  flex-direction: column;
+  flex-grow: 2;
+  padding: 2%;
+  color: #000;
+}
+
+.rbc-time-content, .rbc-timeslot-group, .rbc-today {
+  background-color: #fff;
+}
+
+.rbc-header-gutter {
+  background-color: #fff;
 }
 
 .view {
 	float: right;
-	width: 50%;
+	width: 44%;
+  flex-direction: column;
+  flex-grow: 2;
+  padding: 2%;
 }
 
-.placeholder {
-    padding: 300px;
-    font-size: 50px;
-    border: 2px dotted black;
+input.addItem_timeselector_button {
+    width: 150px;
+    font-size: 16px;
+    border: none;
+    height: 30px;
+    margin: 20px;
+    border-radius: 25px;
+}
+
+input.addItem_timeselector_button:hover {
+  background-color: white;
+}
+
+.addItem_timeselector_button.length30 {
+  background-color: green;
+}
+
+.addItem_timeselector_button.length60 {
+  background-color: red;
+}
+
+.addItem_timeselector_button.length90 {
+  background-color: lightblue;
 }

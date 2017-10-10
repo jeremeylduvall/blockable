@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ( { onClick, value, classNames } ) => {
+const Button = ( { onClick, value, className } ) => {
 	return (
 		<input
 			type='button'
 			onClick={ onClick }
 			value={ value }
-			className={ classNames }
+			className={ className }
 		/>
 	);
 };

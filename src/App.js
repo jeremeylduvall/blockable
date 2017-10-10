@@ -10,8 +10,10 @@ class App extends Component {
                 <header className="App-header">
                     <h1 className="App-title">Blockable</h1>
                 </header>
-                <CalendarView />
-                <AddItemView />
+                <div className="blockable">
+                    <CalendarView />
+                    <AddItemView />
+                </div>
             </div>
         )
     }

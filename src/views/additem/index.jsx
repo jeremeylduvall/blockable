@@ -21,7 +21,7 @@ class AddItemView extends React.Component {
 
 		times.forEach( function( time, index ) {
 			result.push(
-				<Button value={ time + ' minutes' } key={ index } onClick={ onButtonClick.bind( this, time ) } />
+				<Button value={ time + ' minutes' } key={ index } className={ 'addItem_timeselector_button' + ' ' + 'length' + time  } onClick={ onButtonClick.bind( this, time ) } />
 			);
 		} );
 
