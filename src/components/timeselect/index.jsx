@@ -2,8 +2,8 @@ import React from 'react';
 import config from '../../default.json';
 import moment from 'moment';
 
-class TimeSelect extends React.Component {
-	determineTimeOptions = () => {
+const TimeSelect = () => {
+	const determineTimeOptions = () => {
 		const timeValues = [];
 		var time = moment( config.day.start, 'h:mma' );
 		const endTime = moment( config.day.end, 'h:mma' );
@@ -14,23 +14,21 @@ class TimeSelect extends React.Component {
 		}
 
 		return timeValues;
-	}
+	};
 
-	renderTimeOptions = () => {
-		const timeArray = this.determineTimeOptions();
+	const renderTimeOptions = () => {
+		const timeArray = determineTimeOptions();
 
 		return ( timeArray.map( ( time ) => (
 			<option value={ time.format( 'h:mma' ) } key={ time.format( 'h:mma' ) }>{ time.format( 'h:mma' ) }</option>
 		) ) );
-	}
+	};
 
-	render() {
-		return (
-			<select name="time">
-				{ this.renderTimeOptions() }
-			</select>
-		);
-	}
-}
+	return (
+		<select name="time">
+			{ renderTimeOptions() }
+		</select>
+	);
+};
 
 export default TimeSelect;

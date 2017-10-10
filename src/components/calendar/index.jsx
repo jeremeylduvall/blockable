@@ -7,20 +7,18 @@ BigCalendar.momentLocalizer( moment );
 
 const date = new Date();
 
-class Calendar extends React.Component {
-	render() {
-		return( 
-			<BigCalendar
-				defaultDate={ date }
-				events={ this.props.events }
-				defaultView='day'
-				toolbar={ false }
-				min={ moment( config.day.start, 'h:mma' ).toDate() }
-				max={ moment( config.day.end, 'h:mma').toDate() }
-				onSelectEvent={ this.props.onEventClick }
-	      />
-		)
-	}
-}
+const Calendar = ( { events, onEventClick } ) => {
+	return (
+		<BigCalendar
+			defaultDate={ date }
+			events={ events }
+			defaultView='day'
+			toolbar={ false }
+			min={ moment( config.day.start, 'h:mma' ).toDate() }
+			max={ moment( config.day.end, 'h:mma' ).toDate() }
+			onSelectEvent={ onEventClick }
+      />
+	);
+};
 
 export default Calendar;

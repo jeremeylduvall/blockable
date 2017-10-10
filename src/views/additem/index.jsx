@@ -71,7 +71,6 @@ class AddItemView extends React.Component {
 		const eventStartTime = moment( startTime, 'h:mma' ).toDate();
 		const eventEndTime = moment( startTime, 'h:mma' ).add( currentSegmentLength, 'm' ).toDate()
 		const eventDescription = document.getElementsByName( 'eventtext' )[0].value;
-
 		const eventDetails = [ eventDescription, eventStartTime, eventEndTime ];
 
 		// Add the event to the store
