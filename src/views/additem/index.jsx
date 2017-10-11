@@ -20,7 +20,7 @@ class AddItemView extends React.Component {
 		const { times, onButtonClick } = this.props;
 
 		times.forEach( function( time, index ) {
-			const classes = ['addItem_timeselector_button', 'length' + time];
+			const classes = ['blockable-app_time-selector-button', 'length' + time];
 			result.push(
 				<Button value={ time + ' minutes' } key={ index } className={ classes.join( ' ' )  } onClick={ onButtonClick.bind( this, time ) } />
 			);
@@ -39,19 +39,20 @@ class AddItemView extends React.Component {
 		}
 
 		return (
-			<div>
-				<div>Start a { this.props.currentSegmentLength }-minute long calendar block</div>
+			<div className='blockable-app_add-item-view'>
+				<div className='blockable-app_segment-length-details'>Start a { this.props.currentSegmentLength }-minute long calendar block</div>
 				<TextBox />
-				<div>
+				<div className='blockable-app_event-controls'>
 					<Button 
 						value={
 							this.props.selectedEvent.event && this.props.selectedEvent.selected ?
 							'Delete' :
 							'Cancel'
 						}
+						className='blockable-app_event-controls-cancel-button'
 						onClick={ onButtonClick.bind( this, null ) }
 					/>
-					<Button value='Confirm' onClick={ this.onSubmitEvent } />
+					<Button value='Confirm' onClick={ this.onSubmitEvent } className='blockable-app_event-controls-confirm-button' />
 				</div>
 			</div>
 
@@ -60,7 +61,7 @@ class AddItemView extends React.Component {
 
 	renderTimeSelect = () => {
 		return (
-			<div>Start a new block at <TimeSelect /></div>
+			<div className='blockable-app_segment-start-selector'>Start a new block at <TimeSelect /></div>
 		);
 	}
 
@@ -87,8 +88,10 @@ class AddItemView extends React.Component {
 
 	render() {
 		return( 
-			<div className='view'>
-				{ this.renderButtonGroup() }
+			<div className='blockable-app_view-side'>
+				<span>
+					{ this.renderButtonGroup() }
+				</span>
 				{ this.renderTimeSelect() }
 				{ this.renderTextBox() }
 			</div>
