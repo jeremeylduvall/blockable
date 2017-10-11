@@ -11,19 +11,15 @@ Background - #355C7D */
     text-align: center;
 }
 
-.App-header {
+.blockable-header {
     background-color: #355C7D;
     height: 10%;
     padding: 10px;
     color: #fff;
 }
 
-.App-title {
+.blockable-title {
     font-size: 3.5em;
-}
-
-.App-intro {
-    font-size: large;
 }
 
 html, body {
@@ -40,8 +36,18 @@ body {
 }
 
 .blockable {
-    height: 90%;
+    height: 85%;
     display: flex;
+}
+
+.blockable-footer svg {
+    height: 16px;
+    vertical-align: middle;
+}
+
+.blockable-footer a {
+    text-decoration: none;
+    color: #fff;
 }
 
 /* Calendar side styling */
