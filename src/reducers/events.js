@@ -4,7 +4,7 @@ const events = ( state = [], action ) => {
 			return [
 				...state,
 				{
-				  title: action.description,
+				  title: action.title,
 				  start: action.startTime,
 				  end: action.endTime,
 				  desc: action.description,

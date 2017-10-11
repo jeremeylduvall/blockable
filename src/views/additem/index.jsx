@@ -70,10 +70,11 @@ class AddItemView extends React.Component {
 		const startTime = document.getElementsByName( 'time' )[0].value;
 
 		// Build the event details
+		const eventTitle = currentSegmentLength + ' work block';
 		const eventStartTime = moment( startTime, 'h:mma' ).toDate();
 		const eventEndTime = moment( startTime, 'h:mma' ).add( currentSegmentLength, 'm' ).toDate()
 		const eventDescription = document.getElementsByName( 'eventtext' )[0].value;
-		const eventDetails = [ eventDescription, eventStartTime, eventEndTime ];
+		const eventDetails = [ eventTitle, eventStartTime, eventEndTime, eventDescription ];
 
 		// Add the event to the store
 		onAddEvent( eventDetails );
@@ -114,8 +115,8 @@ const mapDispatchToProps = dispatch => {
 			dispatch( textVisibility( time ) );
 			dispatch( eventSelected() );
 		},
-		onAddEvent: ( [ description, startTime, endTime ] ) => {
-			dispatch( addEvent( description, startTime, endTime ) );
+		onAddEvent: ( [ title, startTime, endTime, description ] ) => {
+			dispatch( addEvent( title, startTime, endTime, description ) );
 			dispatch( eventSelected() );
 		},
 	}

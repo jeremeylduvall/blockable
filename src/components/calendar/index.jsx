@@ -16,6 +16,19 @@ const addEventClass = ( event ) => {
 	};
 }
 
+const eventStyle = ( event ) => {
+	return (
+		<span>
+			<strong>
+				{ event.title }
+			</strong>
+			<div>
+			{ event.event.desc }
+			</div>
+		</span>
+	);
+}
+
 const Calendar = ( { events, onEventClick } ) => {
 	return (
 		<BigCalendar
@@ -27,6 +40,9 @@ const Calendar = ( { events, onEventClick } ) => {
 			max={ moment( config.day.end, 'h:mma' ).toDate() }
 			onSelectEvent={ onEventClick }
 			eventPropGetter={ addEventClass }
+			components={ {
+				event: eventStyle,
+			} }
       />
 	);
 };

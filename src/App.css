@@ -6,6 +6,7 @@
 Secondary - #F7DB4F
 Background - #355C7D */
 
+/* Main App Styles */
 .App {
     text-align: center;
 }
@@ -43,6 +44,7 @@ body {
     display: flex;
 }
 
+/* Calendar side styling */
 .blockable-app_calendar-side {
     float: left;
     width: 44%;
@@ -61,6 +63,8 @@ body {
     background-color: #fff;
 }
 
+/* View side styling */
+
 .blockable-app_view-side {
     float: right;
     width: 44%;
@@ -72,7 +76,6 @@ body {
     display: flex;
 }
 
-/* View side styling */
 .blockable-app_add-item-view, .placeholder {
     flex: 1;
     display: flex;
@@ -108,7 +111,7 @@ textarea {
     color: #fff;
 }
 
-.blockable-app_time-selector-button.length30 {
+.blockable-app_time-selector-button.length45 {
     background-color: #F8B195;
 }
 
@@ -120,7 +123,7 @@ textarea {
     background-color: #6C5B7B;
 }
 
-.blockable-app_30-minute-block {
+.blockable-app_45-minute-block {
     background-color: #F8B195;
 }
 
