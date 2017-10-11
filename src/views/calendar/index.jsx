@@ -15,7 +15,7 @@ class CalendarView extends React.Component {
 
 	render() {
 		return(
-			<div className='calendar'>
+			<div className='blockable-app_calendar-side'>
 				<Calendar
 					events={ this.props.events }
 					onEventClick={ this.onEventClick }

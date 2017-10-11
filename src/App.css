@@ -43,13 +43,14 @@ body {
     display: flex;
 }
 
-.calendar {
+.blockable-app_calendar-side {
     float: left;
     width: 44%;
     flex-direction: column;
     flex-grow: 2;
     padding: 2%;
     color: #000;
+    box-sizing: border-box;
 }
 
 .rbc-time-content, .rbc-timeslot-group, .rbc-today {
@@ -159,4 +160,21 @@ textarea {
     font-size: 16px;
     background-color: #fff;
     border-color: #fff;
+}
+
+/* Mobile size */
+@media screen and ( max-width: 769px ) {
+    .blockable {
+        display: flex;
+        flex-direction: column-reverse;
+        min-height: 1200px;
+    }
+
+    .blockable-app_view-side, .blockable-app_calendar-side {
+        width: 100%;
+    }
+
+    .blockable-app_view-side {
+        min-height: 300px;
+    }
 }
