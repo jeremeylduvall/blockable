@@ -4,11 +4,6 @@ import CalendarView from './views/calendar';
 import AddItemView from './views/additem';
 import Heart from 'genericons-neue-react/icons/heart';
 
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
-
 class App extends Component {
     render() {
         return (
