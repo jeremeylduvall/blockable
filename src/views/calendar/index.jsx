@@ -1,8 +1,12 @@
+/* External Dependencies */
 import React from 'react';
-import Calendar from '../../components/calendar';
 import { connect } from 'react-redux'
-import { removeEvent, textVisibility, eventSelected } from '../../actions';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+
+/* Internal Dependencies */
+import Calendar from '../../components/calendar';
+import { removeEvent, textVisibility, eventSelected } from '../../actions';
 
 class CalendarView extends React.Component {
 	onEventClick = ( event ) => {
@@ -40,6 +44,11 @@ const mapDispatchToProps = dispatch => {
 		},
 	}
 }
+
+CalendarView.propTypes = {
+  events: PropTypes.array,
+  onEventClick: PropTypes.func,
+};
 
 export default connect(
   mapStateToProps,

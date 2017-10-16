@@ -1,6 +1,10 @@
+/* External Dependencies */
 import React from 'react';
+import PropTypes from 'prop-types';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+
+/* Internal Dependencies */
 import config from '../../default.json';
 
 BigCalendar.momentLocalizer( moment );
@@ -23,7 +27,7 @@ const eventStyle = ( event ) => {
 				{ event.title }
 			</strong>
 			<div>
-			{ event.event.desc }
+				{ event.event.desc }
 			</div>
 		</span>
 	);
@@ -45,6 +49,11 @@ const Calendar = ( { events, onEventClick } ) => {
 			} }
       />
 	);
+};
+
+Calendar.propTypes = {
+  events: PropTypes.array,
+  onEventClick: PropTypes.func,
 };
 
 export default Calendar;

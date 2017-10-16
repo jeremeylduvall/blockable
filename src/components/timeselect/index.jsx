@@ -1,6 +1,9 @@
+/* External Dependencies */
 import React from 'react';
-import config from '../../default.json';
 import moment from 'moment';
+
+/* External Dependencies */
+import config from '../../default.json';
 
 const TimeSelect = () => {
 	const determineTimeOptions = () => {

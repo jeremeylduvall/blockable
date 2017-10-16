@@ -1,11 +1,15 @@
+/* External Dependencies */
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+
+/* Internal Dependencies */
 import Button from '../../components/button';
 import Placeholder from '../../components/placeholder';
-import { connect } from 'react-redux';
 import { textVisibility, addEvent, eventSelected } from '../../actions';
 import TextBox from '../../components/textbox';
 import TimeSelect from '../../components/timeselect';
-import moment from 'moment';
 
 class AddItemView extends React.Component {
 	componentDidUpdate() {
@@ -121,6 +125,15 @@ const mapDispatchToProps = dispatch => {
 		},
 	}
 }
+
+AddItemView.propTypes = {
+	onButtonClick: PropTypes.func,
+	onAddEvent: PropTypes.func,
+	times: PropTypes.array,
+	textVisibility: PropTypes.bool,
+	currentSegmentLength: PropTypes.number,
+	selectedEvent: PropTypes.object,
+};
 
 export default connect(
   mapStateToProps,

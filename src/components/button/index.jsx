@@ -1,3 +1,4 @@
+/* External Dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -13,9 +14,9 @@ const Button = ( { onClick, value, className } ) => {
 };
 
 Button.propTypes = {
-  onClick: PropTypes.func,
-  value: PropTypes.string,
-  className: PropTypes.string,
+	onClick: PropTypes.func,
+	value: PropTypes.string,
+	className: PropTypes.string,
 };
 
 export default Button;
