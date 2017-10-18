@@ -22,7 +22,7 @@ export const textVisibility = ( time ) => {
   }
 }
 
-export const eventSelected = ( event ) => {
+export const eventSelected = ( event, time ) => {
   return {
     type: 'EVENT_SELECTED',
     event

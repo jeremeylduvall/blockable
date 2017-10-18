@@ -19,22 +19,38 @@ class AddItemView extends React.Component {
 			document.getElementsByName( 'eventtext' )[0].value = this.props.selectedEvent.event.desc;	
 		}
 	}
+
 	renderButtonGroup = () => {
 		const result = [];
-		const { times, onButtonClick } = this.props;
+		const { times } = this.props;
 
 		times.forEach( function( time, index ) {
 			const classes = ['blockable-app_time-selector-button', 'length' + time];
 			result.push(
-				<Button value={ time + ' minutes' } key={ index } className={ classes.join( ' ' )  } onClick={ onButtonClick.bind( this, time ) } />
+				<Button value={ time + ' minutes' } key={ index } className={ classes.join( ' ' )  } onClick={ this.onButtonClick.bind( this, time ) } />
 			);
-		} );
+		}, this );
 
 		return result;
 	}
 
+	onButtonClick = ( time ) => {
+		const { selectedEvent } = this.props;
+		const selectedEventDuration = selectedEvent && selectedEvent.event ?
+			( moment( selectedEvent.event.end ).diff( moment( selectedEvent.event.start ) ) )/60000 :
+			null;
+
+		if ( selectedEvent && selectedEvent.selected && selectedEventDuration === time ) {
+			this.props.updateTextVisibility( time );	
+			return;
+		}
+
+		this.props.updateTextVisibility( time );
+		this.props.eventSelected();
+	}
+
 	renderTextBox = () => {
-		const { textVisibility, onButtonClick } = this.props;
+		const { textVisibility } = this.props;
 
 		if ( textVisibility === false ) {
 			return (
@@ -54,7 +70,7 @@ class AddItemView extends React.Component {
 							'Cancel'
 						}
 						className='blockable-app_event-controls-cancel-button'
-						onClick={ onButtonClick.bind( this, null ) }
+						onClick={ this.onButtonClick.bind( this, null ) }
 					/>
 					<Button value='Confirm' onClick={ this.onSubmitEvent } className='blockable-app_event-controls-confirm-button' />
 				</div>
@@ -70,7 +86,7 @@ class AddItemView extends React.Component {
 	}
 
 	onSubmitEvent = () => {
-		const { currentSegmentLength, onButtonClick, onAddEvent } = this.props;
+		const { currentSegmentLength, updateTextVisibility, eventSelected, onAddEvent } = this.props;
 		const startTime = document.getElementsByName( 'time' )[0].value;
 
 		// Build the event details
@@ -82,8 +98,9 @@ class AddItemView extends React.Component {
 
 		// Add the event to the store
 		onAddEvent( eventDetails );
+		updateTextVisibility( null );
+		eventSelected();
 		this.clearTextBox();
-		onButtonClick( null );
 	}
 
 	clearTextBox = () => {
@@ -115,8 +132,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onButtonClick: ( time ) => {
+		updateTextVisibility: ( time ) => {
 			dispatch( textVisibility( time ) );
+		},
+		eventSelected: () => {
 			dispatch( eventSelected() );
 		},
 		onAddEvent: ( [ title, startTime, endTime, description ] ) => {
@@ -127,7 +146,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 AddItemView.propTypes = {
-	onButtonClick: PropTypes.func,
 	onAddEvent: PropTypes.func,
 	times: PropTypes.array,
 	textVisibility: PropTypes.bool,
