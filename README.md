@@ -10,3 +10,7 @@ As for technologies:
 The project is live on GitHub pages here:
 
 https://jeremeylduvall.github.io/blockable/
+
+You can see a GIF of it in action here:
+
+![Blockable GIF](https://github.com/jeremeylduvall/blockable/blob/master/src/images/Blockable%20Demo.gif)
